@@ -42,6 +42,8 @@ $line-height-base: 1.625;  // golden ratio number would be 1.618
 // Or include the whole thing
 @import 'bootstrap/scss/bootstrap';
 
+// Animation libraries
+@import 'animate';
 
 // Finally, include any custom stuff that IS NOT an override
 @import 'responsive-type';

@@ -1,0 +1,16 @@
+// Import the animations that we want to use:
+
+// Animation names are the same as these file names
+@import
+  'animate/base',
+  'animate/fading_entrances/fadeIn',
+  'animate/fading_entrances/fadeInLeft',
+  'animate/fading_entrances/fadeInRight',
+  'animate/fading_entrances/fadeInUp',
+  'animate/sliding_entrances/slideInUp',
+  'animate/sliding_entrances/slideInLeft',
+  'animate/sliding_entrances/slideInRight',
+  'animate/zooming_entrances/zoomIn',
+  'animate/zooming_entrances/zoomInLeft',
+  'animate/zooming_entrances/zoomInRight',
+  'animate/zooming_entrances/zoomInUp';
