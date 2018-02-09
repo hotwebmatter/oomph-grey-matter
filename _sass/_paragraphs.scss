@@ -7,19 +7,83 @@ body {
   background-color: $gray-200 !important;
 }
 
-.js-waypoint-nav {
-  padding-top: 63px;
+.bg-primary-light {
+  background: percent-color($primary, 8%);
 }
 
-#navbar.nav-pills .nav-link {
-  //transition: all 250ms ease;
+
+// NAVBAR start
+
+#navbarNav {
+  font-size: 87.5%;
+  
+  .nav-link {
+    transition: all 250ms ease;
+    
+    &.active-section,
+    &.active-article {
+      color: $black !important;
+    }
+  }
+  
+  .submenu {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+  
+  .nav-link.text-primary + .submenu > .submenu-item {
+    border-left: 2px solid $primary;
+  }
+  
+  .nav-link.text-primary.active-section,
+  .nav-link.text-primary.active-section + .submenu {
+    background: rgba($primary, .1);
+    height: auto;
+    padding: 0 0 .5em 1em;
+  }
+  
+  .nav-link.text-success + .submenu > .submenu-item {
+    border-left: 2px solid $success;
+  }
+  
+  .nav-link.text-success.active-section,
+  .nav-link.text-success.active-section + .submenu {
+    background: rgba($success, .1);
+    height: auto;
+    padding: 0 0 .5em 1em;
+  }
+  
+  .nav-link.text-warning + .submenu > .submenu-item {
+    border-left: 2px solid $warning;
+  }
+  
+  .nav-link.text-warning.active-section,
+  .nav-link.text-warning.active-section + .submenu {
+    background: rgba($warning, .25);
+    height: auto;
+    padding: 0 0 .5em 1em;
+  }
 }
 
-#navbar.nav-pills .nav-link.active {
-  background-color: transparent;
-  outline: 1px solid white;
-  //z-index: 1;
+.submenu-item {
+
+  .nav-link {
+    color: $gray-600;
+    font-size: 85.5%;
+    line-height: 1.25;
+    padding: .25rem 1rem;
+    
+    &:hover, &:focus {
+      color: currentColor;
+    }
+  }
 }
+
+// NAVBAR end
+
+
+// Inline floating images start
 
 // Handling images or other media in body content
 .in-content-float-left {
@@ -88,12 +152,16 @@ body {
   }
 }
 
+// Inline floating images end
+
+
 .sample {
   
   &__code pre code {
     font-size: 87.5%;
   }
 }
+
 
 //<div class="sample py-2 py-md-3 py-lg-4">
 //  <div class="paragraph paragraph--single paragraph--bg-img align-content--left align-content--bottom">
@@ -122,7 +190,23 @@ body {
   
   &--columns {}
   
-  &__text {}
+  &__text {
+    
+    &__inner {
+      
+      *:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  // Override some vertical rhythm things for Hero paragraphs
+  &--bg-img#{&}--single {
+
+    .display-3 {
+      line-height: 1.25;
+    }
+  }
 
 
   &--bg-img#{&}--single &__text {

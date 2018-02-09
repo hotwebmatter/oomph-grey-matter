@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+
+  {% include head.html %}
+
+  <body class="template-{{ page.layout }} {{ page.body-class }}">
+    <div class="layout">
+
+  	{% include navbar.html %}
+
+    <main id="main" class="layout__main">
+      <div class="content__main js-waypoint-nav">
+
+        {{ content }}
+
+      </div>
+    </main>
+
+    {% include footer.html %}
+
+    </div>
+  </body>
+</html>

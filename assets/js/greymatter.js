@@ -29,7 +29,7 @@ $(document).ready(function() {
     });
   });
 
-
+  
   // Add dimensions to the bottom of the viewport
   $(window).on('resize', showSize);
 	showSize();

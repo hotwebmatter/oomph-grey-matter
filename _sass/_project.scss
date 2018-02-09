@@ -18,12 +18,85 @@ address {
 
 // Layout
 .layout {
-  
+
   &__header {}
+  
+  &__navbar {
+    
+    &__inner {
+      
+      .nav {
+        
+        @include media-breakpoint-down(md) {
+          display: block;
+        }
+      }
+    }
+  }
   
   &__main {}
   
   &__footer {}
+
+  // At large screens, set the navbar to be down the left side
+  $navbar-width-lg: 20%;
+  $maincol-width-lg: 80%;
+  
+  @include media-breakpoint-up(lg) {
+
+    .template-bcbsri & {
+      display: flex;
+      flex-flow: row wrap;
+      align-content: stretch;
+    }
+
+    .template-bcbsri &__navbar {
+      width: $navbar-width-lg;
+      
+      .navbar-expand-lg {
+        flex-flow: column wrap;
+        align-items: left;
+        
+        .nav {
+          flex-flow: column wrap;
+        }
+      }
+      
+      .navbar-brand {
+        white-space: normal;
+      }
+    }
+
+    .template-bcbsri &__main {
+      width: $maincol-width-lg;
+    }
+
+    .template-bcbsri &__footer {
+      width: 100%;
+    }
+  }
+  
+  @media (min-height: 740px) {
+    
+    .template-bcbsri &__navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: $navbar-width-lg;
+    }
+    
+    .template-bcbsri &__main {
+      margin-left: $navbar-width-lg;
+      overflow: visible;
+    }
+    
+    .template-bcbsri & .paragraph--single.paragraph--bg-img {
+      position: relative;
+      width: 100vw;
+      left: - strip-unit($navbar-width-lg) * 1vw;
+    }
+  }
 }
 
 
