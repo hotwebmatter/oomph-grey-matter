@@ -9,6 +9,7 @@ $type-sizes: (
   // scss-lint:disable DeclarationOrder
   sm: (
     base: 15,
+    micro: 12,
     h6: 15,
     h5: 16,
     h4: 18,
@@ -25,6 +26,7 @@ $type-sizes: (
   // scss-lint:disable DeclarationOrder
   xl: (
     base: 18,
+    micro: 14,
     h6: 18,
     h5: 21,
     h4: 25,
@@ -88,6 +90,10 @@ h5,
 h6,
 .h6 {
 	@include one-element-size(h6);
+}
+
+.small-text {
+  @include one-element-size(micro);
 }
 
 .lead {

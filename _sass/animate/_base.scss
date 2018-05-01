@@ -1,23 +1,26 @@
-.animated.hide {
-  visibility: hidden;
-}
+.js {
 
-.animated.start {
-  animation-duration: 1s;
-  animation-fill-mode: both;
-}
+  .animated.hide {
+    visibility: hidden;
+  }
 
-.animated.infinite {
-  animation-iteration-count: infinite;
-}
+  .animated.start {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
 
-.animated.hinge {
-  animation-duration: 2s;
-}
+  .animated.infinite {
+    animation-iteration-count: infinite;
+  }
 
-.animated.flipOutX,
-.animated.flipOutY,
-.animated.bounceIn,
-.animated.bounceOut {
-  animation-duration: .75s;
+  .animated.hinge {
+    animation-duration: 2s;
+  }
+
+  .animated.flipOutX,
+  .animated.flipOutY,
+  .animated.bounceIn,
+  .animated.bounceOut {
+    animation-duration: .75s;
+  }
 }

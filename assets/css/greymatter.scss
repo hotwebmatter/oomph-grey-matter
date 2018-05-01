@@ -21,6 +21,18 @@
 $font-family-serif: Georgia, 'Times New Roman', serif;
 $line-height-base: 1.625;  // golden ratio number would be 1.618
 
+$grid-gutter-width: 2rem;
+
+
+// Colors
+$primary: #006ea6; // <- A11y version. #0091DA: matunuck beach
+$green: #78be20; // east greenwich
+$cyan: #5bc2e7; // block island sky
+$yellow: #f1be48; // narragansett sun
+$purple: #a20067; // rose island
+$red: #e35205; // newport coral
+$dark: #003e51; // providence night
+
 
 // #Bootstrap
 // https://getbootstrap.com/docs/4.0/getting-started/theming/

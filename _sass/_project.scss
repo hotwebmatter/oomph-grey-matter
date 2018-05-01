@@ -16,13 +16,19 @@ address {
 }
 
 
+// At large screens, set the navbar to be down the left side
+$navbar-width-lg: 20%;
+$maincol-width-lg: 80%;
+
+
 // Layout
 .layout {
 
   &__header {}
   
   &__navbar {
-    
+    background: rgba($white, .8);
+
     &__inner {
       
       .nav {
@@ -38,10 +44,7 @@ address {
   
   &__footer {}
 
-  // At large screens, set the navbar to be down the left side
-  $navbar-width-lg: 20%;
-  $maincol-width-lg: 80%;
-  
+  // Media
   @include media-breakpoint-up(lg) {
 
     .template-bcbsri & {
@@ -70,31 +73,58 @@ address {
     .template-bcbsri &__main {
       width: $maincol-width-lg;
     }
-
-    .template-bcbsri &__footer {
-      width: 100%;
+  }
+  
+  @media (max-width: map-get($grid-breakpoints, lg)) and (min-height: 567px) {
+    
+    .navbar-brand {
+      font-size: 1rem;
+    }
+    
+    .template-bcbsri &__navbar {
+      height: 56px;
+    }
+    
+    .template-bcbsri &__navbar__inner {
+      background: rgba(255, 255, 255, 0.92);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 2;
     }
   }
   
-  @media (min-height: 740px) {
+  @media (min-width: map-get($grid-breakpoints, lg)) and (min-height: 640px) {
     
     .template-bcbsri &__navbar {
+      background-color: transparent;
+      background-image: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.85) 10%, rgba(255, 255, 255, .25) 90%);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100vh 100vh;
       position: fixed;
       top: 0;
       left: 0;
       bottom: 0;
       width: $navbar-width-lg;
+      z-index: 2;
     }
-    
+
     .template-bcbsri &__main {
       margin-left: $navbar-width-lg;
       overflow: visible;
     }
     
+    // When the navbar is a fixed left element, move some things under and around it
     .template-bcbsri & .paragraph--single.paragraph--bg-img {
       position: relative;
       width: 100vw;
       left: - strip-unit($navbar-width-lg) * 1vw;
+      
+      .paragraph__text {
+        margin-left: strip-unit($navbar-width-lg) * 1vw;
+      }
     }
   }
 }
@@ -102,14 +132,120 @@ address {
 
 // Content
 .content {
-  
+
   &__header {
-    
+
     .display-1, .display-2, .display-3, .display-4,
     h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
       margin-top: 0;
     }
   }
-  
+
   &__main {}
+}
+
+
+// Footer
+.footer {
+  color: $white;
+  background-color: $primary;
+
+  a {
+    display: inline-block;
+  }
+
+  // Treat these like columns
+  &__reports,
+  &__persistent {
+    padding: 1rem ($grid-gutter-width / 2);
+    
+    @include media-breakpoint-up(md) {
+      padding: 1.5rem ($grid-gutter-width / 2);
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: 2rem ($grid-gutter-width / 2);
+    }
+  }
+
+  &__reports &__link {
+    @extend .small-text;
+    font-weight: $font-weight-bold;
+    letter-spacing: .06125em;
+    text-transform: uppercase;
+    padding-bottom: .75rem;
+  }
+
+  &__social,
+  &__list {
+
+    li {
+      display: inline-block;
+    }
+  }
+
+  &__social {}
+
+  &__list {}
+
+  &__link {
+    color: $white;
+    
+    &:hover, &:focus {
+      color: $white;
+    }
+  }
+  
+  &__social &__link {
+    color: percent-color($primary, 20%);
+    margin: 0 .25rem;
+
+    &:hover, &:focus {
+      color: $white;
+    }
+
+    .fa {
+      font-size: 200%; // Base size declared by font-awesome CSS is 14px
+    }
+  }
+  
+  &__list &__link {
+    margin: 0 .5rem 0 0;
+  }
+
+  &__statement {
+    color: percent-color($primary, 15%);
+  }
+  
+  // Media
+  @include media-breakpoint-up(lg) {
+    // 1. Break the flexbox wrapping by forcing 100% width
+    // 2. Use z-index to bring it over the left sidebar layer
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%; // 1.
+    position: relative; // 2.
+    z-index: 3; // 2.
+
+    &__reports {
+      width: $navbar-width-lg;
+    }
+
+    &__persistent {
+      width: 70%;
+    }
+
+    &__social {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      width: 10%;
+
+      li {
+        display: block;
+        text-align: right;
+        margin-bottom: .5rem;
+      }
+    }
+  }
 }

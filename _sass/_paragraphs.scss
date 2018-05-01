@@ -1,7 +1,4 @@
-body {
-  // For Scrollspy
-  position: relative;
-}
+// General
 
 .bg-light {
   background-color: $gray-200 !important;
@@ -11,6 +8,40 @@ body {
   background: percent-color($primary, 8%);
 }
 
+// Bootstrap style naming convention for Minimum Height
+.mh-sm-100,
+.mh-md-100,
+.mh-lg-100,
+.mh-xl-100 {
+  min-height: auto;
+}
+
+.mh-100 {
+  min-height: 100vh;
+}
+
+@include media-breakpoint-up(sm) {
+  .mh-sm-100 {
+    min-height: 100vh;
+  }
+}
+@include media-breakpoint-up(md) {
+  .mh-md-100 {
+    min-height: 100vh;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .mh-lg-100 {
+    min-height: 100vh;
+  }
+}
+@include media-breakpoint-up(xl) {
+  .mh-xl-100 {
+    min-height: 100vh;
+  }
+}
+
+
 
 // NAVBAR start
 
@@ -19,10 +50,10 @@ body {
   
   .nav-link {
     transition: all 250ms ease;
-    
-    &.active-section,
-    &.active-article {
+
+    &.active-section {
       color: $black !important;
+      background-color: $warning;
     }
   }
   
@@ -30,39 +61,6 @@ body {
     height: 0;
     overflow: hidden;
     padding: 0;
-  }
-  
-  .nav-link.text-primary + .submenu > .submenu-item {
-    border-left: 2px solid $primary;
-  }
-  
-  .nav-link.text-primary.active-section,
-  .nav-link.text-primary.active-section + .submenu {
-    background: rgba($primary, .1);
-    height: auto;
-    padding: 0 0 .5em 1em;
-  }
-  
-  .nav-link.text-success + .submenu > .submenu-item {
-    border-left: 2px solid $success;
-  }
-  
-  .nav-link.text-success.active-section,
-  .nav-link.text-success.active-section + .submenu {
-    background: rgba($success, .1);
-    height: auto;
-    padding: 0 0 .5em 1em;
-  }
-  
-  .nav-link.text-warning + .submenu > .submenu-item {
-    border-left: 2px solid $warning;
-  }
-  
-  .nav-link.text-warning.active-section,
-  .nav-link.text-warning.active-section + .submenu {
-    background: rgba($warning, .25);
-    height: auto;
-    padding: 0 0 .5em 1em;
   }
 }
 
@@ -155,10 +153,52 @@ body {
 // Inline floating images end
 
 
+// Sharing start
+
+//<div class="share pt-2 pt-md-3 pt-lg-4">
+//  <div class="addthis_toolbox addthis_default_style addthis_32x32_style" data-url="{{ site.baseurl }}{{ page.permalink }}#blueangel-quote" data-title="By teaming up with Boys &amp; Girls Clubs of Providence, Blue Cross &amp; Blue Shield of Rhode Island has impacted the lives of over 400 children" data-description="BlueAngel Community Health Grants" data-media="https://source.unsplash.com/collection/370799/800x800">
+//    <a class="addthis_button_compact"></a>
+//  </div>
+//</div>
+
+.share {
+  text-align: right;
+
+  .addthis_toolbox {
+    display: inline-block;
+  }
+  
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    top: 0;
+    right: 2rem;
+  }
+}
+
+// Sharing end
+
+
 .sample {
   
   &__code pre code {
     font-size: 87.5%;
+  }
+}
+
+.section {
+  padding-bottom: ($spacer * 2);
+  
+  @include media-breakpoint-up(sm) {
+    padding-bottom: ($spacer * 3);
+  }
+  @include media-breakpoint-up(md) {
+    padding-bottom: ($spacer * 3.5);
+  }
+  @include media-breakpoint-up(lg) {
+    padding-bottom: ($spacer * 4);
+  }
+  @include media-breakpoint-up(xl) {
+    padding-bottom: ($spacer * 4.5);
   }
 }
 
@@ -177,23 +217,49 @@ body {
 //</div>
 
 .paragraph {
-  
+  position: relative; // for sharing positioning
+  overflow: hidden;
+
   &.border-top {
     border-width: 5px !important;
   }
-  
+
   &--single {
     position: relative;
     overflow: hidden;
     z-index: 1;
   }
-  
+
+  &__row__bgimage {
+
+    @include media-breakpoint-down(md) {
+      margin: 0 -7.5%;
+      max-width: 115%;
+    }
+
+    @include media-breakpoint-down(sm) {
+      margin: 0 -15%;
+      max-width: 130%;
+    }
+  }
+
   &--columns {}
-  
+
   &__text {
-    
+    padding: $spacer;
+
+    @include media-breakpoint-up(sm) {
+      padding: ($spacer * 1.5) $spacer;
+    }
+    @include media-breakpoint-up(md) {
+      padding: ($spacer * 2) ($spacer *1.5);
+    }
+    @include media-breakpoint-up(xl) {
+      padding: ($spacer * 3) ($spacer *2);
+    }
+
     &__inner {
-      
+
       *:first-child {
         margin-top: 0;
       }
