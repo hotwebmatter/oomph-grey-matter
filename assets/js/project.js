@@ -16,18 +16,14 @@ $(document).ready(function() {
 
   // http://codetheory.in/change-active-state-links-sticky-navigation-scroll/
   var sections = $('.js-waypoint-nav .js-section')
-    , articles = $('.js-waypoint-nav .js-article')
     , animated = $('.layout .animated')
-    , page = $('.layout')
-    , nav = $('#navbarNav')
-    , nav_height = nav.outerHeight();
+    , nav = $('#navbarNav');
   
-  // Use scrollStop() to throttle the window.onScroll events
-  scrollStop(function () {
+  $(window).on('scroll', function () {
     var cur_pos = $(this).scrollTop();
    
     sections.each(function() {
-      var top = $(this).offset().top - nav_height,
+      var top = $(this).offset().top,
           bottom = top + $(this).outerHeight();
    
       if (cur_pos >= top && cur_pos <= bottom) {
@@ -39,20 +35,7 @@ $(document).ready(function() {
       }
     });
    
-    articles.each(function() {
-      var top = $(this).offset().top - nav_height,
-          bottom = top + $(this).outerHeight();
-   
-      if (cur_pos >= top && cur_pos <= bottom) {
-        nav.find('a').removeClass('active-article');
-        articles.removeClass('active-article');
-   
-        $(this).addClass('active-article');
-        nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active-article');
-      }
-    });
-    
-    // While we are here...
+    // Trigger some animations when items come into view
     animated.each(function() {
       // Subtracting some from offset() top because otherwise, the element animates
       // too late in the scroll, resulting in something that feels laggy
